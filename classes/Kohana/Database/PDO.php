@@ -193,11 +193,13 @@ class Kohana_Database_PDO extends Database {
 				$result->rowCount(),
 			);
 		}
-		else
+		elseif ($type === Database::UPDATE)
 		{
 			// Return the number of rows affected
 			return $result->rowCount();
 		}
+
+		return $result->errorCode() === '00000';
 	}
 
 	public function begin($mode = NULL)
