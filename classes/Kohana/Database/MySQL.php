@@ -217,11 +217,13 @@ class Kohana_Database_MySQL extends Database {
 				mysql_affected_rows($this->_connection),
 			);
 		}
-		else
+		elseif ($type === Database::UPDATE)
 		{
 			// Return the number of rows affected
 			return mysql_affected_rows($this->_connection);
 		}
+
+		return $result; 
 	}
 
 	public function datatype($type)
